@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<h2 th:style="${'text-align:center'}">[ 회원정보 입력 ]</h2>
+<form th:action="@{/join}" method="post">
+<table border="1" th:style="${'margin:0 auto'}">
+	<tr>
+		<td rowspan="2"><label for = "id">아이디 : </label></td>
+		<td><input type="text" th:name="id" id = "id"></td>
+	</tr>
+	<tr>
+		<td><input type="button" id="doubleid" value="중복확인"/><label id="msg"></label></td>
+	</tr>	
+	<tr>
+		<td><label for = "pass">비밀번호 : </label></td>
+		<td><input type="password" th:name="password" id = "password"></td>
+	</tr>
+	<tr>
+		<td><label for = "name">이름 : </label></td>
+		<td><input type="text" th:name="name" id = "name"></td>
+	</tr>
+	<tr>
+		<td><label for = "sex">성별 : </label></td>
+		<td>
+			<input type="radio" th:name="sex" value="male" id = "sex" checked>남
+			<input type="radio" th:name="sex" value="female">여
+		</td>
+	</tr>
+	<tr>
+		<td><label for = "age">나이 : </label></td>
+		<td><input type="text" th:name="age" id = "age"></td>
+	</tr>
+	<tr>
+		<td><label for = "email">이메일주소 : </label></td>
+		<td><input type="text" th:name="email" id = "email"></td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>
+			<input type="submit" value="가입">
+			<input type="reset" value="다시 작성">
+		</td>
+	</tr>
+</table>
+</form>
+</body>
+</html>

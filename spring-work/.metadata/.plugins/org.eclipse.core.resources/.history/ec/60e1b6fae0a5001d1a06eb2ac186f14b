@@ -1,0 +1,40 @@
+package com.kr.board.service;
+
+import java.util.Optional;
+
+import org.springframework.stereotype.Service;
+
+import com.kr.board.entity.Member;
+import com.kr.board.repository.MemberRepository;
+
+import lombok.RequiredArgsConstructor;
+
+@Service
+@RequiredArgsConstructor
+public class MemberService {
+	private final MemberRepository memberRepository;
+	
+	public void join(Member member) throws Exception {
+		Optional<Member> omember = memberRepository.findById(member.getId());
+		if(omember.isPresent()) throw new Exception("아이디 중복");
+		memberRepository.save(member);
+	}
+	
+	public boolean doubleId(String id) throws Exception {
+		Optional<Member> member = memberRepository.findById(id);
+		if (member.isEmpty()) return false;
+		return true;
+	}
+	
+	
+	public boolean login(String id, String password) throws Exception {
+		Optional<Member> omember = memberRepository.findById(id);
+		if (omember.isEmpty()) return false;
+		Member member = omember.get();
+		if (member.getPassword().equals(password)) {
+			return true;
+		}
+		return false;
+	}
+	
+}

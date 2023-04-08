@@ -1,0 +1,22 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Spring 게시판</title>
+</head>
+<body>
+<form action="./boardwrite" method="post" enctype="multiport/form-data"></form>
+	<table>
+		<tr>
+			<td class="td_left"><label for="writer">글쓴이</label></td>
+			<td class="td_right"><input type="text" name="subject" id="subject" required="required"/></td>
+		</tr>
+		<tr>
+			<td class="td_right"><label for="writer">제목</label></td>
+			<td class="td_left"><textarea name="content" id="content" rows="15" cols="40" required="required"/></td>
+		</tr>
+	</table>
+</body>
+</html>

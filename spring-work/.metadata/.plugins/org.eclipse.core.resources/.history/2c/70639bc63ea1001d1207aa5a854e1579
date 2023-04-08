@@ -1,0 +1,39 @@
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.board">
+	<select id="selectBoardList" resultType="Board">
+		<![CDATA[
+			select * from board
+		]]>
+	</select>
+	
+	<insert id="insertBoard" parameterType="Board">
+		<![CDATA[
+			insert into board (writer,subject,content,filename,readcnt,regdate)
+				values(#{writer},#{subject},#{content},#{filename},0,CURDATE())
+		]]>
+	</insert>
+	
+	<select id="selectBoard" parameterType="Integer" resultType="Board">
+		<![CDATA[
+			select * from board where num=#{num}
+		]]>
+	</select>
+	
+	<update id="updateDetail" parameterType="java.util.Hashmap">
+		<![CDATA[
+			update board set subject=#{param.get(2)},content=#{param.get(3)} where num=#{param.get(1)}
+		]]>
+	</update>
+	
+	<delete>
+	</delete>
+	
+	<update id ="updateReadCnt" parameterType="Integer">
+		<![CDATA[
+			update board set readcnt=readcnt+1 where num=#{num}
+		]]>
+	</update>
+	
+</mapper>	

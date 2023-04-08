@@ -1,0 +1,54 @@
+package com.example.service;
+
+import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.example.dao.MemberDAO;
+import com.example.dto.MemberDTO;
+
+
+@Service
+public class MemberServiceImpl implements MemberService{
+
+	
+	@Autowired
+	MemberDAO memberDao;
+	public MemberDTO login(Map<String, String> map) {
+		return null;
+	}
+	
+	public int idCheck(String userid) {
+		MemberDTO member = memberDao.idCheck(userid);
+		if (member==null) return 1;
+		else return 0;
+	}
+
+	public int memberAdd(MemberDTO dto, String passwdConfirm) {
+		// 회원가입 실패 0
+		// 회원가입 실패 1
+		
+
+			if(idCheck(dto.getUserid())==0||!dto.getPasswd().equals(passwdConfirm)) {
+				return 0;
+			}
+						
+	
+		
+		
+		
+		return 0;
+	}
+	
+	public MemberDTO mypage(String userid) {
+		return null;
+	}
+
+	public int memberUpdate(MemberDTO dto) {
+		return 0;
+	}
+}
+
+
+

@@ -1,0 +1,5 @@
+package com.kr.board.repository;
+
+public interface MemberRepository {
+
+}

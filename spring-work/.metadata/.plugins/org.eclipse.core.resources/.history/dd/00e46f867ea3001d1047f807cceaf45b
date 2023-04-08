@@ -1,0 +1,36 @@
+package com.kr.board.entity;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
+
+@NoArgsConstructor
+@AllArgsConstructor
+@Getter
+@Setter
+@ToString
+@Entity
+public class Board {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY) // auto incremet 관련 어노테이션
+	private Integer num;
+	
+	@Column
+	private String writer;
+	private String subject;
+	private String content;
+	private String filename;
+	private Integer readcnt;
+	private Date regdate;
+ 	
+
+}	
+

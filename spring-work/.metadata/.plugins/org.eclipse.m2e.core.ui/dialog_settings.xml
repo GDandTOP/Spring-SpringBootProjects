@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="org.eclipse.m2e.core.pom.overview">
+		<list key="ciManagementUrl">
+		</list>
+		<list key="ciManagementSystem">
+		</list>
+		<list key="issueManagementSystem">
+		</list>
+		<list key="issueManagementUrl">
+		</list>
+	</section>
+	<section name="org.eclipse.m2e.core.pom.dependencies">
+	</section>
+	<section name="MavenProjectImportWizardPage">
+		<list key="rootDirectory">
+			<item value="C:\Users\ktds\Desktop\YoungukJava\java_workspace\spring-work\ShopMiniMallBoot_Maria_솔루션"/>
+			<item value="C:\Users\ktds\Desktop\YoungukJava\java_workspace\spring-work\ShopMiniMallBoot_Maria_김영욱"/>
+			<item value="C:\Users\ktds\Desktop\YoungukJava\java_workspace\spring-work\김영욱"/>
+			<item value="C:\Users\ktds\Desktop\YoungukJava\java_workspace\spring-work\Board-master"/>
+			<item value="C:\Users\ktds\Desktop\YoungukJava\java_workspace\spring-work\Bank-master"/>
+			<item value="C:\Users\ktds\Desktop\YoungukJava\java_workspace\spring-work\BankBoot-master"/>
+			<item value="C:\Users\ktds\Desktop\YoungukJava\java_workspace\spring-work\Board"/>
+			<item value="C:\Users\ktds\Desktop\YoungukJava\java_workspace\spring-work\Bank"/>
+		</list>
+		<list key="projectNameTemplate">
+			<item value="[artifactId]"/>
+			<item value="[artifactId]-TRUNK"/>
+			<item value="[artifactId]-[version]"/>
+			<item value="[groupId].[artifactId]"/>
+			<item value="[groupId].[artifactId]-[version]"/>
+			<item value="[name]"/>
+		</list>
+	</section>
+</section>

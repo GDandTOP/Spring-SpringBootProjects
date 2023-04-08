@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<th:block th:fragment="headerFragment">
+	<div th:style="$'width:100%; height:80px; text-align:center; background:orange'"> 
+		<h1>KT Bank</h1>
+	</div>
+	<div th:style="$'width:100%; height:80px; text-align:center; background:orange'"> 
+		<h1>KT Bank</h1>
+	</div>
+</th:block>
+
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.notice">
+	<select id="selectNoticeList" resultType="Notice">
+		<![CDATA[
+			select * from notice order by no desc
+		]]>
+	</select>
+	
+	
+	<insert id="insertNotice" parameterType="Notice">
+		<![CDATA[
+			insert into notice (title,author,content,writeday) values(#{title},#{author},#{content},CURDATE())
+		]]>
+	</insert>
+	
+	<select id="selectNotice" parameterType="Integer" resultType="Notice">
+		<![CDATA[
+			select * from notice where no=#{no}
+		]]>
+	</select>
+	
+	<update id="updateNotice" parameterType="java.util.HashMap">
+		<![CDATA[
+			update notice set title=#{title}, author=#{author}, content=#{content} where no=#{no}
+		]]>
+	</update>
+	
+	<update id="updateReadCnt" parameterType="Integer">
+		<![CDATA[
+			update notice set readcnt=readcnt+1 where no=#{no}
+		]]>
+	</update>	
+	
+	<select id="selectByAuthor" parameterType="String" resultType="Notice">
+		<![CDATA[
+			select * from notice where author like CONCAT('%',#{author},'%')
+		]]>	
+	</select>
+	
+		<select id="selectByTitle" parameterType="String" resultType="Notice">
+		<![CDATA[
+			select * from notice where title like CONCAT('%',#{title},'%')
+		]]>	
+	</select>
+	
+	
+		<delete id="deleteNotice" parameterType="Integer">
+		<![CDATA[
+			delete from notice where no=#{no}
+		]]>
+	</delete>
+
+</mapper>	

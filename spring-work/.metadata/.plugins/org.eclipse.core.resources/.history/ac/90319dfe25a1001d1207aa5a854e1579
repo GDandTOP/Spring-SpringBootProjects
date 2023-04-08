@@ -1,0 +1,16 @@
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.board">
+	<select id="selectBoardList" resultType="Board">
+		<![CDATA[
+			select * from board
+		]]>
+	</select>
+	
+	<insert id="insertBoard" parameterType="Board">
+		insert into (writer,subject,content,filename,readcnt,regdate)
+			values (#{writer},#{subject},#{content},#{filename},0,CURDATE());
+	</insert>
+	
+</mapper>	

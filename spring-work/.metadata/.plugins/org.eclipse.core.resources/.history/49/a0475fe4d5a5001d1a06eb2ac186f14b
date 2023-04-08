@@ -1,0 +1,6 @@
+package com.kr.board.controller;
+
+@Controller
+public class MemberController {
+
+}

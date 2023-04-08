@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www/ultraq.net.nz/thymeleaf/layout">
+
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+	<th:block layout:fragment="css"></th:block>
+	<script th:src="@{http://code.jquery.com/jquery-latest.min.js}"></script>
+	<th:block layout:fragment="js"></th:block>
+</head>
+<body>
+
+<table th:style="${'width:1000px; margin:0 auto">
+
+</table>
+
+</body>
+</html>

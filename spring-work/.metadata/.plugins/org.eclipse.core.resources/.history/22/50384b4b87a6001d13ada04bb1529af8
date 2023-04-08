@@ -1,0 +1,27 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+<meta charset="UTF-8">
+<title>Hello</title>
+</head>
+<body>
+<h2 th:style="${'text-align:center'}">[ 출금 ]</h2>
+<form th:action="@{/deposit}" method="post">
+	<table border="1" th:style="${'margin:0 auto'}">
+		<tr>
+			<td>계좌번호</td>
+			<td><input type="text" th:name="id"/></td>
+		</tr>
+		<tr>
+			<td>입금액</td>
+			<td><input type="text" th:name="money"/></td>
+		</tr>
+
+		<tr>
+			<td colspan="2"><input type="submit" value="출금"/></td>
+		</tr>
+	</table>
+</form>
+</body>
+</html>

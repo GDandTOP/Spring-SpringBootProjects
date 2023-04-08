@@ -1,0 +1,48 @@
+package com.kr.board.service;
+
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.request;
+
+import java.util.Optional;
+
+import javax.servlet.http.HttpSession;
+
+import org.springframework.stereotype.Service;
+
+import com.kr.board.entity.Member;
+import com.kr.board.repository.MemberRepository;
+
+import lombok.RequiredArgsConstructor;
+
+@Service
+@RequiredArgsConstructor
+public class MemberService {
+	private final MemberRepository memberRepository;
+	HttpSession session = new HttpSession();
+	
+	public void join(Member member) throws Exception {
+		Optional<Member> omember = memberRepository.findById(member.getId());
+		if(omember.isPresent()) throw new Exception("아이디 중복");
+		memberRepository.save(member);
+	}
+	
+	public boolean doubleId(String id) throws Exception {
+		Optional<Member> member = memberRepository.findById(id);
+		if (member.isEmpty()) return false;
+		return true;
+	}
+	
+	
+	public boolean login(String id, String password) throws Exception {
+		Optional<Member> omember = memberRepository.findById(id);
+		if (omember.isEmpty()) throw new Exception("아이디 오류");
+		
+		Member member = omember.get();
+		if (member.getPassword().equals(password)) {
+			session.setAttribute("writer", member.getName());
+			throw new Exception("비밀번호 오류");
+			
+		}
+		return false;
+	}
+	
+}

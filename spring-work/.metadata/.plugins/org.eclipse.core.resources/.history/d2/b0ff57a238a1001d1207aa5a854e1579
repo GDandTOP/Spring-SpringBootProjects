@@ -1,0 +1,13 @@
+package com.kt.board.dao;
+
+import java.util.List;
+
+import com.kt.board.dto.Board;
+
+public interface BoardDAO {
+	List<Board> selectBoardList() throws Exception;
+	void insertBoard(Board board) throws Exception;
+	Board selectBoard(Integer num) throws Exception;
+	void updateBoard(Integer num,String subject,String content) throws Exception;
+
+}

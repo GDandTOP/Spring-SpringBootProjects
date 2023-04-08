@@ -1,0 +1,10 @@
+package com.kt.board.service;
+
+import java.util.List;
+
+import com.kt.board.dto.Board;
+
+public interface BoardService {
+	List<Board> getBoardList() throws Exception;
+	void boardWrite(Board board, MultipartFile file) throws Exception;
+}

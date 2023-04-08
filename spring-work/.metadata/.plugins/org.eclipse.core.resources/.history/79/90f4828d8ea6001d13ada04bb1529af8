@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<th:block th:fragment="headerFragment">
+	<div th:style="$'width:100%; height:80px; text-align:center; background:orange'"> 
+		<h1>KT Bank</h1>
+	</div>
+	<div th:style="$'width:100%; height:80px; text-align:center; background:orange'"> 
+		<span th:if="${member}!=null">
+			${member.name}님 반갑습니다.
+			<a th:href="@{/logout}">로그아웃</a>
+		</span>
+		<span th:if="${member}!=null">
+			<a th:href="@{/login}">로그인</a>
+		</span>
+	</div>
+</th:block>
+
+</body>
+</html>

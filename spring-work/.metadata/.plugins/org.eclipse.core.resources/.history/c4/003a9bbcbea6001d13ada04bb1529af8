@@ -1,0 +1,55 @@
+package com.kr.board.service;
+
+import java.util.Optional;
+
+import javax.servlet.http.HttpSession;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.kr.board.entity.Member;
+import com.kr.board.repository.MemberRepository;
+
+import lombok.RequiredArgsConstructor;
+
+@Service
+@RequiredArgsConstructor
+public class MemberService {
+	private final MemberRepository memberRepository;
+	
+	@Autowired
+	private HttpSession session; 
+
+	public void join(Member member) throws Exception {
+		Optional<Member> omember = memberRepository.findById(member.getUserid());
+		if(omember.isPresent()) throw new Exception("아이디 중복");
+		session.removeAttribute("member");
+		memberRepository.save(member);
+	}
+	
+	public boolean doubleId(String id) throws Exception {
+		Optional<Member> omember = memberRepository.findById(id);
+		if(omember.isEmpty()) return false;
+		return true;
+	}
+	
+	public void login(String id, String password) throws Exception {
+		Optional<Member> omember = memberRepository.findById(id);
+		if(omember.isEmpty()) throw new Exception("존재하지 않는 아이디입니다.");
+		Member member = omember.get();
+		if(member.getPasswd().equals(password)) {
+			session.setAttribute("member", member);
+		} else {
+			throw new Exception("비밀번호 오류");
+		}
+	}
+	
+	public void logout() throws Exception {
+		session.removeAttribute("member");
+	}
+	
+	public Member mypage() throws Exception {
+		Member member = (Member)session.getAttribute("member");
+		return memberRepository.findById(member.getUserid()).get();
+	}
+}

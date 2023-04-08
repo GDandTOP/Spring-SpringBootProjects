@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf">
+
+
+	<div th:style="${'width:100%; height:400px; text-align:center; margin-top:150px;"> 
+		<a th:href="@{/}">계좌개설</a><br/>
+		<a th:href="@{/deposit}">입금</a><br/>
+		<a th:href="@{/withdraw}">출금</a><br/>
+		<a th:href="@{/accountInfo}">계좌 조회</a><br/>
+		<a th:href="@{/allAccountInfo}">전체 계좌 조회</a><br/>
+	</div>
+
+
+</html>

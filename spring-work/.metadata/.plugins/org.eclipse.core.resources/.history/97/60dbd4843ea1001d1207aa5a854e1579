@@ -1,0 +1,42 @@
+package com.kt.board.dao;
+
+import java.util.HashMap;
+import java.util.List;
+
+import org.mybatis.spring.SqlSessionTemplate;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+import com.kt.board.dto.Board;
+
+@Repository
+public class BoardDAOImpl implements BoardDAO {
+
+	@Autowired
+	SqlSessionTemplate sqlSession;
+	
+	@Override
+	public List<Board> selectBoardList() throws Exception {
+		return sqlSession.selectList("mapper.board.selectBoardList");
+	}
+
+	@Override
+	public void insertBoard(Board board) throws Exception {
+		sqlSession.insert("mapper.board.insertBoard", board);
+	}
+
+
+	@Override
+	public Board selectBoard(Integer num) throws Exception {
+		return sqlSession.selectOne("mapper.board.selectBoard",num);
+	}
+
+	@Override
+	public void updateBoard(HashMap<Integer,Object> param) throws Exception {
+		
+		
+		sqlSession.update("mapper.board.updateBoard", param);
+		
+		
+	}
+}

@@ -1,0 +1,15 @@
+package com.kr.board.repository;
+
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.data.domain.Sort.Direction;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.kr.board.entity.Board;
+
+public interface BoardRepository extends JpaRepository<Board,String> {
+
+	
+
+}

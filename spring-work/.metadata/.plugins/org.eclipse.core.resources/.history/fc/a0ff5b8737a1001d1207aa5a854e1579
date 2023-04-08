@@ -1,0 +1,108 @@
+package com.kt.board.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
+
+import com.kt.board.dto.Board;
+import com.kt.board.service.BoardService;
+
+@Controller
+public class BoardController {
+	
+	@Autowired
+	BoardService boardService;
+	
+	@GetMapping("/")
+	public ModelAndView boardList() {
+		ModelAndView mav = new ModelAndView();
+		try {
+			List<Board> boards = boardService.getBoardList();
+			if(boards.size()>0) {
+				mav.addObject("boards", boards);
+			}
+			mav.setViewName("boardlist");
+		} catch(Exception e) {
+			e.printStackTrace();
+			mav.addObject("err", "게시판 목록 조회 실패");
+			mav.setViewName("error");
+		}
+		return mav;
+	}
+	
+	@GetMapping("/writeform")
+	public String writeform() {
+		return "writeform";
+	}
+	
+	@PostMapping("/boardwrite")
+	public ModelAndView boardWrite(@ModelAttribute Board board, 
+			@RequestParam(name="file",required=false) MultipartFile file) {
+		ModelAndView mav = new ModelAndView();
+		try {
+			boardService.boardWrite(board, file);
+			mav.setViewName("redirect:/");
+		} catch(Exception e) {
+			e.printStackTrace();
+			mav.addObject("err", "게시판 글 등록 실패");
+			mav.setViewName("error");
+		}
+		return mav;
+	}
+	
+	@GetMapping("/detail")
+	public ModelAndView detailEdit(@RequestParam("num") Integer num) {
+		ModelAndView mav = new ModelAndView();
+		try {
+			Board board = boardService.getBoard(num);
+			mav.addObject("article",board);
+			mav.setViewName("detailform");
+		} catch(Exception e) {
+			e.printStackTrace();
+			mav.addObject("err","상세 글 조회 실패");
+			mav.setViewName("error");
+		}
+		return mav;
+	}
+	
+	@PostMapping("/boardmodify")
+	public ModelAndView detail(@RequestParam("num") Integer num,@RequestParam("subject") String subject,@RequestParam("content") String content) {
+		ModelAndView mav = new ModelAndView();
+		try {
+			Board boardData = boardService.getBoard(board.getNum());
+			boardData.setWriter(board.getWriter());
+			boardData.setSubject(board.getSubject());
+			boardData.setContent(board.getContent());
+			
+			boardService.boardUpdate(boardData);
+			mav.addObject("article",boardData);
+			mav.setViewName("detailform");
+		} catch(Exception e) {
+			e.printStackTrace();
+			mav.addObject("err","상세 글 조회 실패");
+			mav.setViewName("error");
+		}
+		return mav;
+	}
+	
+//	public ModelAndView boardWrite(@ModelAttribute Board board) {
+//		ModelAndView mav = new ModelAndView();
+//		try {
+//			//boardService.boardWrite(board, file);
+//			boardService.boardWrite(board);
+//			mav.setViewName("redirect:/");
+//		} catch(Exception e) {
+//			e.printStackTrace();
+//			mav.addObject("err", "게시판 글 등록 실패");
+//			mav.setViewName("error");
+//		}
+//		return mav;
+//	}
+}

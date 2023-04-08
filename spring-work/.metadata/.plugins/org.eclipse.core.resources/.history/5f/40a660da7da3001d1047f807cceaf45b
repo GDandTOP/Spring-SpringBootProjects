@@ -1,0 +1,6 @@
+package com.kr.board.entity;
+
+@Entity
+public class Board {
+
+}

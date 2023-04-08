@@ -1,0 +1,28 @@
+package com.kr.board.service;
+
+import org.springframework.stereotype.Service;
+
+import com.kr.board.entity.Member;
+import com.kr.board.repository.MemberRepository;
+
+import lombok.RequiredArgsConstructor;
+
+@Service
+@RequiredArgsConstructor
+public class MemberService {
+	private final MemberRepository memberRepository;
+	
+	public void join(Member member) {
+		memberRepository.save(member);
+	}
+	
+	public boolean doubleId(String id) throws Excpetion  {
+		
+	}
+	
+	
+	public boolean login(String id, String password) throws Exception {
+		
+	}
+	
+}

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www/ultraq.net.nz/thymeleaf/layout">
+
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+	<th:block layout:fragment="css"></th:block>
+	<script th:src="@{http://code.jquery.com/jquery-latest.min.js}"></script>
+	<th:block layout:fragment="js"></th:block>
+</head>
+<body>
+
+<table th:style="${'width:1000px; margin:0 auto'}">
+	<tr th:style="${'width:100%; height:160px; text-align:center; background:orange'">
+		<td colspan="2"><th:block th:replace="fragments/header::headerFragment"></th:block></td>
+	</tr>
+	<tr th:style="${'width:30%; height:400px; background:skyblue'">
+		<td>
+			<div th:replace="fragments/menu::menuFragment"></div>
+		</td>
+		<td th:style="${'width:70%; height:400px; background:aqua">
+			<div layout:fragment="content"></div>
+		</td>
+	</tr>
+
+</table>
+
+</body>
+</html>

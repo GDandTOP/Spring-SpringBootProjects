@@ -1,0 +1,23 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert Title here</title>
+</head>
+<body>
+<img src="/upload/logo.jpg" width="100px" height="100px">
+<a href="/login">로그인</a> $nbsp;
+<a href="/join">회원가입  </a>
+<a href="/boardlist">게시판</a><br><br>
+<img src="/upload/gd.jpg" width="100px" height="100px">
+</body>
+
+</html>
+
+<center>
+<form action="./login" method="post" id="login">
+
+</form>
+</center>

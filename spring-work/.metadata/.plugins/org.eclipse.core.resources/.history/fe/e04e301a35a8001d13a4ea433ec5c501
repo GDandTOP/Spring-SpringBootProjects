@@ -1,0 +1,101 @@
+$(document).ready(function(){
+
+    	 //수정버튼
+        $(".updateBtn").on("click",function(e){
+           	var num;
+        	var gAmount;
+        	var gPrice;
+        	
+        	num= $(this).attr("data-xxx");
+    		var string = "#"+"cartAmount"+num
+    		gAmount = $(string).val()
+    	
+			$.ajax({
+				url : 'cartUpdate',
+				type : 'get',
+				data : {
+					"num" : num,
+					"gAmount" : gAmount
+				},
+				dataType : 'text', 
+				success : function(responseData, status, xhr) {	
+						alert("장바구니 업데이트가 완료되었습니다.");
+						window.location.href=window.location.href
+						
+				},
+				error : function(xhr, status, error) {
+					alert("카트 업데이트 실패");
+				}
+			});	
+        });
+    	 
+        //삭제버튼
+        $(".delBtn").on("click",function(){
+        	var num= $(this).attr("data-xxx");
+        	var xxx = $(this);
+        	$.ajax({
+        		url:'cartDelete',
+        		type:'get',
+        		dataType:'text',
+        		data:{
+        			num:num
+        		},
+        		success:function(data,status,xhr){
+	        		window.location.href=window.location.href
+        		},
+        		error:function(xhr,status,error){
+        			
+        		}
+        	});//end ajax
+        });
+ 
+        $("#mainBtn").click(function(){
+			location.href="/shop/main";
+		});
+		$("#logoutBtn").click(function() {			
+			location.href = "/shop/logout";	
+			alert("로그아웃 되었습니다.");		
+		});
+		$("#myPageBtn").click(function() {
+			location.href = "/shop/mypage";
+		});
+		$("#cartListBtn").click(function() {
+			location.href = "/shop/cartList";
+		});
+		
+		
+        //전체선택
+        $("#allCheck").on("click",function(){
+        	
+        		
+	
+			if($("#allCheck").prop("checked")) {
+				$(".check").prop("checked",true);
+			} else {
+				$(".check").prop("checked",false);
+			}
+        });
+        
+       
+        $("#delAllCart").on("click",function(){
+        	let list = []
+        	$(".check").each(function (index) {
+				if($(this).is(":checked")==true){
+			    	list.push($(this).val());
+			    }
+			});
+        	console.log(list);
+
+        });
+        
+       
+        $(".orderBtn").on("click",function(){
+        	var num= $(this).attr("data-xxx");
+        	location.href="cartOrderConfirm?num="+num;
+        });
+     
+        $("#orderAllConfirm").on("click",function(){
+        	$("form").attr("action", "cartOrderAllConfirm");
+        	$("form").submit();// trigger
+        });
+   });

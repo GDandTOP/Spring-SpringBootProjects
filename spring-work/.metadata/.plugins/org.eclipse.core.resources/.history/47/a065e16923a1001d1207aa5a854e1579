@@ -1,0 +1,33 @@
+package com.kt.board.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
+
+import com.kt.board.dao.BoardDAO;
+import com.kt.board.dto.Board;
+
+@Service
+public class BoardServiceImpl implements BoardService {
+
+	@Autowired
+	BoardDAO boardDAO;
+	
+	@Override
+	public List<Board> getBoardList() throws Exception {
+		return boardDAO.selectBoardList();
+	}
+
+	@Override
+	public void boardWrite(Board board, MultipartFile mfile) throws Exception {
+		//java_workspace\spring-work\Board\upload
+		String path = "C";
+		File file = newFile(path+mfile.getOriginalFilename());
+		mfile.transferTo(file);
+		board.setFilename(mfile.getOriginalFilename());
+		boardDao.insertBoard(board);
+	}
+
+}

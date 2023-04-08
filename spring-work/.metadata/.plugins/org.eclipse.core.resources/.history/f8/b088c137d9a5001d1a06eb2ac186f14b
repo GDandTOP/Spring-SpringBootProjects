@@ -1,0 +1,5 @@
+package com.kr.board.service;
+
+public class MemberService {
+
+}

@@ -1,0 +1,14 @@
+
+
+server.port=8090
+server.servlet.context-path=/shop
+
+# JSP설정
+
+# CSS,images,JS 설정
+
+
+# DB 설정
+
+
+# mybatis 설정

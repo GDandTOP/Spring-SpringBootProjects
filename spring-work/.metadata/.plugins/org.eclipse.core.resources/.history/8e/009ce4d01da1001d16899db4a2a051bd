@@ -1,0 +1,22 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Spring 게시판</title>
+</head>
+<body>
+<form action="./boardwrite" method="post" enctype="multiport/form-data"></form>
+	<table>
+		<tr>
+			<td><label for="writer">글쓴이</label></td>
+			<td><label for="writer">글쓴이</label></td>
+		</tr>
+		<tr>
+			<td><label for="writer">글쓴이</label></td>
+			<td><label for="writer">글쓴이</label></td>
+		</tr>
+	</table>
+</body>
+</html>

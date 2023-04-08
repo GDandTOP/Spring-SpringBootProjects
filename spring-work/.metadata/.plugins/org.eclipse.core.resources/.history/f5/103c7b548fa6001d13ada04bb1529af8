@@ -1,0 +1,10 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+
+	<div th:style="${'width:100%; height:400px; text-align:center; margin-top:150px;"> 
+		<a th:href="@{/}">계좌개설</a><br/>
+	</div>
+
+
+</html>

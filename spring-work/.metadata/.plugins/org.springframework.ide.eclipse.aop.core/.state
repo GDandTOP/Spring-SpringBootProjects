@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aop-reference-model>
+<aop-project name="Exam2"/>
+<aop-project name="Bank"/>
+<aop-project name="Board-master"/>
+<aop-project name="XMLCheck"/>
+<aop-project name="Board2"/>
+<aop-project name="ShopMiniMallBoot_Maria_¼Ö·ç¼Ç"/>
+<aop-project name="bootexam02"/>
+<aop-project name="Bank-master"/>
+<aop-project name="Board"/>
+<aop-project name="DIProj"/>
+<aop-project name="AOPProj"/>
+<aop-project name="BankBoot"/>
+<aop-project name="ShopMiniMallBoot_Maria_±è¿µ¿í"/>
+<aop-project name="±è¿µ¿í"/>
+</aop-reference-model>

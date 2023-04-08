@@ -1,0 +1,12 @@
+package com.kr.board.entity;
+
+import javax.persistence.Entity;
+
+
+@getter
+@setter
+@toString
+@Entity
+public class Board {
+
+}

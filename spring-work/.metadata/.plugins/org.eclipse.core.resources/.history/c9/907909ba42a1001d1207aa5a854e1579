@@ -1,0 +1,55 @@
+package com.kt.board.service;
+
+import java.io.File;
+import java.util.HashMap;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
+
+import com.kt.board.dao.BoardDAO;
+import com.kt.board.dto.Board;
+
+@Service
+public class BoardServiceImpl implements BoardService {
+
+	@Autowired
+	BoardDAO boardDAO;
+	
+	@Override
+	public List<Board> getBoardList() throws Exception {
+		return boardDAO.selectBoardList();
+	}
+
+	@Override
+	public void boardWrite(Board board, MultipartFile mfile) throws Exception {
+		if(mfile!=null && !mfile.isEmpty()) {
+			String path = "C:/Users/ktds/Desktop/YoungukJava/java_workspace/spring-work/Board-master/upload/";
+			File destfile = new File(path+mfile.getOriginalFilename());
+			mfile.transferTo(destfile);
+			board.setFilename(mfile.getOriginalFilename());
+		}
+		boardDAO.insertBoard(board);
+	}
+
+	@Override
+	public Board getBoard(Integer num) throws Exception {
+		boardDAO.updateReadCnt(num);
+		return boardDAO.selectBoard(num);
+		
+	}
+
+	@Override
+	public void boardUpdate(Integer num,String subject,String content) throws Exception {
+		HashMap<Integer,Object> params = new HashMap<>();
+		int i=1;
+		params.put(i++, num);
+		params.put(i++, subject);
+		params.put(i++, content);
+		
+		boardDAO.updateBoard(params);
+		
+	}
+}

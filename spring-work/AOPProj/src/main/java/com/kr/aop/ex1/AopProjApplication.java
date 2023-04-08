@@ -1,0 +1,17 @@
+package com.kr.aop.ex1;
+
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.GenericXmlApplicationContext;
+
+@SpringBootApplication
+public class AopProjApplication {
+
+	public static void main(String[] args) {
+		ApplicationContext ctx = new GenericXmlApplicationContext("beans1.xml");
+		ctx.getBean("proxy");
+		MessageBean bean = (MessageBean)ctx.getBean("targetBean");
+		bean.sayHello();
+	}
+
+}

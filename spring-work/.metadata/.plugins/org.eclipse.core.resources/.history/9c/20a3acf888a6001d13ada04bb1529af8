@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script th:src="@{http://code.jquery.com/jquery-latest.min.js}"></script>
+<script th:src="@{/js/makeaccount.js}"></script>
+</head>
+<body>
+<h2 th:style="${'text-align:center'}">[ 계좌 조회 ]</h2>
+<table border="1" th:style="${'margin:0 auto'}">
+	<tr><td>계좌번호</td><td>이름</td><td>잔액</td><td>계좌구분</td><td>등급</td></tr>
+	<tr th:each="acc, index:${accs}">
+		<td th:text="${acc.id}"></td>
+		<td th:text="${acc.name}"></td>
+		<td th:text="${acc.balance}"></td>
+		<td th:text="${acc.type}"></td>
+		<td th:text="${acc.grade}"></td>
+	</tr>
+</table>
+
+</body>
+</html>
